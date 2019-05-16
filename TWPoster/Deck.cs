@@ -10,11 +10,13 @@ namespace TWPoster
             Cards = cards;
             Decklink = decklink;
             Popularity = popularity;
+            Published = false;
         }
 
         public List<Card> Cards { get; set; }
         public string Decklink { get; set; }
         public int Popularity { get; set; }
+        public bool Published { get; set; }
 
         public override string ToString()
         {
