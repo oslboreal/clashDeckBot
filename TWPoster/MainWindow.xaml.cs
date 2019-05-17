@@ -59,7 +59,7 @@ namespace TWPoster
         {
             timer.Start();
             MainProcess.Instance.Start();
-            btnComenzar.IsEnabled = false;
+            btnComenzar.IsEnabled = true;
         }
     }
 }

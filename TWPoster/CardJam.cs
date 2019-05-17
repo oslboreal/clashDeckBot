@@ -7,11 +7,14 @@ using System.Threading.Tasks;
 
 namespace TWPoster
 {
-    class CardMerge
+    public class CardMerge
     {
-        public CardMerge(List<Image> Images)
+        public CardMerge(List<string> imagesPath)
         {
-            this.Images = Images;
+            this.Images = new List<Image>();
+
+            foreach (var item in imagesPath)
+                Images.Add(Image.FromFile(item));
         }
 
         public void SetWallpaper(Image wp)
@@ -25,31 +28,40 @@ namespace TWPoster
 
         public Image GetMerge()
         {
-            String jpg1 = "image1.png";
-            String jpg2 = "image2.png";
-            String jpg3 = "image3.png";
+            int widthSpaces = 50;
+            int heightSpaces = 100;
+            int cardWidth = 350;
+            int cardHeight = 360;
 
-            Image img1 = Image.FromFile(jpg1);
-            Image img2 = Image.FromFile(jpg2);
+            Image firstImage = Images.First();
+            String resultPath = "image3.png";
 
-
-            int distancia = img1.Width + 100;
-            int width = distancia * 8;
-            int height = img1.Height * 2;
-
-            Bitmap img3 = new Bitmap(width, height);
+            Bitmap img3 = new Bitmap(2000, 2000);
             Graphics g = Graphics.FromImage(img3);
-
             g.Clear(Color.Black);
-            // LOAD WALLPAPER HERE.
-            g.DrawImage(img1, new System.Drawing.Point(10, 10));
-            g.DrawImage(img2, new System.Drawing.Point(distancia, 0));
+
+            for (int i = 0; i < Images.Count; i++)
+            {
+                if (i >= 0 && i < 4)
+                {
+                    if (i == 0)
+                        g.DrawImage(Images[i], new System.Drawing.Point(widthSpaces, heightSpaces));
+                    else
+                        g.DrawImage(Images[i], new System.Drawing.Point(((widthSpaces + cardWidth) * i) + widthSpaces, heightSpaces));
+                }
+                else
+                {
+                    if (i == 4)
+                        g.DrawImage(Images[i], new System.Drawing.Point(widthSpaces, (heightSpaces * 2) + cardHeight));
+                    else
+                        g.DrawImage(Images[i], new System.Drawing.Point(((widthSpaces + cardWidth) * (i - 4)) + widthSpaces, (heightSpaces * 2) + cardHeight));
+                }
+            }
 
             g.Dispose();
-            img1.Dispose();
-            img2.Dispose();
 
-            img3.Save(jpg3, System.Drawing.Imaging.ImageFormat.Png);
+
+            img3.Save(resultPath, System.Drawing.Imaging.ImageFormat.Png);
             img3.Dispose();
 
             return null;
