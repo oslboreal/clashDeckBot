@@ -33,10 +33,13 @@ namespace TWPoster
             int cardWidth = 350;
             int cardHeight = 360;
 
+            int imageWidth = (widthSpaces * 5) + (cardWidth * 4);
+            int imageHeight = (heightSpaces * 3) + (cardHeight * 2);
+
             Image firstImage = Images.First();
             String resultPath = "image3.png";
 
-            Bitmap img3 = new Bitmap(2000, 2000);
+            Bitmap img3 = new Bitmap(imageWidth, imageHeight);
             Graphics g = Graphics.FromImage(img3);
             g.Clear(Color.Black);
 
