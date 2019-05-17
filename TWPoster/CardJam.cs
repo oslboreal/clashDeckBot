@@ -34,7 +34,7 @@ namespace TWPoster
             int cardHeight = 360;
 
             int imageWidth = (widthSpaces * 5) + (cardWidth * 4);
-            int imageHeight = (heightSpaces * 3) + (cardHeight * 2);
+            int imageHeight = (heightSpaces * 4) + (cardHeight * 2);
 
             Image firstImage = Images.First();
             String resultPath = "image3.png";
