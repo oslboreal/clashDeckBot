@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 using System.Threading;
 using System.Timers;
 using System.Windows;
@@ -23,10 +24,15 @@ namespace TWPoster
         /// <summary>
         /// Método encargado de manejar el evento "Archivos analizados"
         /// </summary>
-        private void ArchivosAnalizados_Evento(List<Deck> decks)
+        private void ArchivosAnalizados_Evento(List<string> decks)
         {
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (var item in decks)
+            {
+                stringBuilder.AppendLine(item);
+            }
             var d = new SafeCallDelegate(RefrescarOperacion);
-            d.Invoke(decks[1].ToString());
+            d.Invoke(stringBuilder.ToString());
         }
 
         /// <summary>

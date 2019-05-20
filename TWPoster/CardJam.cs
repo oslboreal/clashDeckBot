@@ -14,6 +14,7 @@ namespace TWPoster
             foreach (var item in imagesPath)
                 Images.Add(Image.FromFile(item));
         }
+        
 
         public void SetWallpaper(Image wp)
         {
@@ -24,9 +25,13 @@ namespace TWPoster
 
         public Image Wallpaper { get; set; } = null;
 
-        public Image GetMerge()
+        /// <summary>
+        /// This method merges cards to draw a deck.
+        /// </summary>
+        /// <returns>Merged image path</returns>
+        public string GetMerge()
         {
-            int widthSpaces = 50;
+            int widthSpaces = 110;
             int heightSpaces = 100;
             int cardWidth = 350;
             int cardHeight = 360;
@@ -35,11 +40,12 @@ namespace TWPoster
             int imageHeight = (heightSpaces * 4) + (cardHeight * 2);
 
             Image firstImage = Images.First();
-            String resultPath = "image3.png";
+            String resultPath = "output.png";
 
-            Bitmap img3 = new Bitmap(imageWidth, imageHeight);
+            Bitmap img3 = new Bitmap("wallpaper.png");
+
             Graphics g = Graphics.FromImage(img3);
-            g.Clear(Color.Black);
+            //g.Clear(Color.Black);
 
             for (int i = 0; i < Images.Count; i++)
             {
@@ -65,8 +71,7 @@ namespace TWPoster
             img3.Save(resultPath, System.Drawing.Imaging.ImageFormat.Png);
             img3.Dispose();
 
-            return null;
-
+            return resultPath;
         }
 
     }

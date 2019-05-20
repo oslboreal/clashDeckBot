@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using TweetSharp;
 using System.Threading;
+using System.IO;
 
 namespace TWPoster
 {
@@ -46,6 +47,48 @@ namespace TWPoster
                 }
             });
             return bret;
+        }
+
+        /// <summary>
+        /// This method send a Tweet.
+        /// </summary>
+        /// <returns>Boolean</returns>
+        public static bool sendTweet(string _status, string imagePath)
+        {
+            SendTweetOptions options = new SendTweetOptions();
+
+            string imageUrl = "file:\\" + Environment.CurrentDirectory + "\\" + imagePath;
+            string URL = "file:\\C:\\Users\\<User>\\Desktop\\test.jpg";
+            string path = new Uri(imageUrl).LocalPath;
+
+            // Sending with Media
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                mainService.SendTweetWithMedia(new SendTweetWithMediaOptions
+                {
+                    Status = _status,
+                    Images = new Dictionary<string, Stream> { { path, stream } }
+                });
+            }
+
+            return true;
+
+            //Dictionary<string, Stream> imagesToSend = new Dictionary<string, Stream>();
+
+            //var stream = new FileStream(imagePath, FileMode.Open);
+            //imagesToSend.Add(imagePath, stream);
+
+
+            //bool bret = false;
+            //mainService.SendTweetWithMedia(new SendTweetWithMediaOptions { Status = _status, Images = imagesToSend }, (tweet, response) =>
+            //{
+            //    if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            //    {
+            //        bret = true;
+            //        stream.Dispose();
+            //    }
+            //});
+            //return bret;
         }
 
         /// <summary>
@@ -94,7 +137,7 @@ namespace TWPoster
             }
             catch (Exception)
             {
-                
+
             }
         }
 
