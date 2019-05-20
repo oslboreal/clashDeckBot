@@ -105,10 +105,12 @@ namespace TWPoster
                         // Image jam.
                         var imagePath = cardMerge.GetMerge();
 
-                        int elixirCost = 0;
+                        long elixirCost = 0;
 
                         foreach (var card in item.Cards)
                             elixirCost += card.Elixir;
+
+                        elixirCost = elixirCost / 8;
 
                         // Send tw.
                         Jarvis.sendTweet($"Deck tendencia mundial -> Costo de elixir:{elixirCost} - Enlace del deck: {item.Decklink}", imagePath);
