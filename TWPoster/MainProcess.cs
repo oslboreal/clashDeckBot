@@ -110,10 +110,9 @@ namespace TWPoster
                     double elixirCost = 0;
 
                     foreach (var card in item.Cards)
-                    {
                         elixirCost += card.Elixir;
-                        elixirCost = elixirCost / 8;
-                    }
+
+                    elixirCost = elixirCost / 8;
 
                     // Elixir cost formatting.
                     var elixirAverage = String.Format("{0:0.0}", elixirCost);
