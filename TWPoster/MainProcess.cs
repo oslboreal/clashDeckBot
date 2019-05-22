@@ -53,7 +53,6 @@ namespace TWPoster
                 {
                     string deckJsons = DeckManager.ObtainTopTenLadderWinRateDecks();
                     decks = JsonConvert.DeserializeObject<List<Deck>>(deckJsons);
-                    decks = decks.GetRange(0, 24);
                     publishedDecks.Clear();
                     messages.Add($"{DateTime.Now.ToString()} - Deck actualizados.");
                 }
@@ -62,12 +61,24 @@ namespace TWPoster
 
                 foreach (var item in decks)
                 {
+                    // If the item exists in published decks collection..
                     var selected = publishedDecks.Where(deck => deck.Decklink == item.Decklink).ToList();
 
                     // Avoid repeat a published deck.
                     if (selected.Count > 0)
                     {
                         decks.Remove(item);
+
+                        // Fill repeated items in de list.
+                        foreach (var publishedItem in selected)
+                        {
+                            var repeated = decks.Where(deck => deck.Decklink == publishedItem.Decklink).ToList();
+
+                            // Clean decks collection.
+                            for (int i = 0; i < repeated.Count; i++)
+                                decks.Remove(repeated[i]);
+                        }
+
                         continue;
                     }
 
