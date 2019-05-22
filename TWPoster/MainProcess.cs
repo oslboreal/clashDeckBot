@@ -6,9 +6,13 @@ using System.IO;
 using System.Net;
 using System.Threading;
 using System.Windows;
+using System.Linq;
 
 namespace TWPoster
 {
+    /// <summary>
+    /// Main process
+    /// </summary>
     public class MainProcess
     {
         private TimeSpan tiempoEspera = TimeSpan.FromMinutes(30);
@@ -16,43 +20,41 @@ namespace TWPoster
         public delegate void DeckObtainedEventRaiser(List<string> decks);
         public event DeckObtainedEventRaiser OnDeckObtained;
 
-        private Deck lastDeck = null;
+        private List<Deck> publishedDecks = new List<Deck>();
 
         private static readonly MainProcess _instance = new MainProcess();
 
-        public static MainProcess Instance
-        {
-            get
-            {
-                return _instance;
-            }
-        }
+        public static MainProcess Instance { get => _instance; }
 
         private Timer timer;
 
-        public MainProcess()
-        {
-
-        }
-
+        /// <summary>
+        /// Starts a new clock instance.
+        /// </summary>
         public void Start()
         {
             timer = new Timer(timer_callBack);
             timer.Change(0, 0);
         }
 
+        /// <summary>
+        /// Clock event.
+        /// </summary>
+        /// <param name="state"></param>
         private void timer_callBack(object state)
         {
             try
             {
                 List<Deck> decks = null;
                 List<string> messages = new List<string>();
+
                 // If needs more decks, fetch.
                 if (decks == null || decks.Count == 0)
                 {
                     string deckJsons = DeckManager.ObtainTopTenLadderWinRateDecks();
                     decks = JsonConvert.DeserializeObject<List<Deck>>(deckJsons);
                     decks = decks.GetRange(0, 24);
+                    publishedDecks.Clear();
                     messages.Add($"{DateTime.Now.ToString()} - Deck actualizados.");
                 }
 
@@ -60,71 +62,68 @@ namespace TWPoster
 
                 foreach (var item in decks)
                 {
-                    if (lastDeck != null)
+                    var selected = publishedDecks.Where(deck => deck.Decklink == item.Decklink).ToList();
+
+                    // Avoid repeat a published deck.
+                    if (selected.Count > 0)
                     {
-                        int count = 0;
-                        for (int i = 0; i < 8; i++)
-                        {
-                            // If they are the same cards.
-                            if (lastDeck.Cards[i].Description == item.Cards[i].Description)
-                                count++;
-                        }
-
-                        if (count == 8)
-                        {
-                            messages.Add($"{DateTime.Now.ToString()} - Deck igual al anterior.");
-                            continue;
-                        }
-                    }
-
-
-                    if (item.Published == false)
-                    {
-                        List<string> images = new List<string>();
-
-                        foreach (var card in item.Cards)
-                        {
-                            string imgUrl = card.Icon;
-                            string name = card.Name;
-                            name = name.Replace(".", String.Empty) + ".png";
-                            string cardFilePath = Environment.CurrentDirectory + "\\Data\\" + name;
-
-
-                            // Si la carta no existe la descargo.
-                            if (!File.Exists(cardFilePath))
-                                using (WebClient wc = new WebClient())
-                                using (Stream s = wc.OpenRead(imgUrl))
-                                using (Bitmap bmp = new Bitmap(s))
-                                    bmp.Save(cardFilePath);
-
-                            images.Add(cardFilePath);
-                        }
-
-                        CardMerge cardMerge = new CardMerge(images);
-
-                        // Image jam.
-                        var imagePath = cardMerge.GetMerge();
-
-                        long elixirCost = 0;
-
-                        foreach (var card in item.Cards)
-                            elixirCost += card.Elixir;
-
-                        elixirCost = elixirCost / 8;
-
-                        // Send tw.
-                        Jarvis.sendTweet($"Deck tendencia mundial -> Costo de elixir:{elixirCost} - Enlace del deck: {item.Decklink}", imagePath);
-
-                        // Rm current decks.
                         decks.Remove(item);
-
-                        // Set the last deck.
-                        lastDeck = item;
-
-                        OnDeckObtained(messages);
-                        // Wait next.
-                        return;
+                        continue;
                     }
+
+                    // Image saving.
+                    List<string> images = new List<string>();
+                    foreach (var card in item.Cards)
+                    {
+                        string imgUrl = card.Icon;
+                        string name = card.Name;
+                        name = name.Replace(".", String.Empty) + ".png";
+                        string cardFilePath = Environment.CurrentDirectory + "\\Data\\" + name;
+
+
+                        // If the card doesn't exist, i'll save it on disk.
+                        if (!File.Exists(cardFilePath))
+                            using (WebClient wc = new WebClient())
+                            using (Stream s = wc.OpenRead(imgUrl))
+                            using (Bitmap bmp = new Bitmap(s))
+                                bmp.Save(cardFilePath);
+
+                        images.Add(cardFilePath);
+                    }
+
+                    // Merging cards.
+                    CardMerge cardMerge = new CardMerge(images);
+                    var imagePath = cardMerge.GetMerge();
+
+                    // Elixir cost calculation.
+                    double elixirCost = 0;
+
+                    foreach (var card in item.Cards)
+                    {
+                        elixirCost += card.Elixir;
+                        elixirCost = elixirCost / 8;
+                    }
+
+                    // Elixir cost formatting.
+                    var elixirAverage = String.Format("{0:0.0}", elixirCost);
+
+                    // Decklink formatting
+                    var deckLink = item.Decklink.Replace("en?", "es?");
+
+                    // Send tw.
+                    Jarvis.sendTweet($"Deck TOP mundial -> Costo promedio de elixir:{elixirAverage} - Enlace del deck: {deckLink}", imagePath);
+
+                    // RM Current deck.
+                    decks.Remove(item);
+
+                    // Add this deck to published decks.
+                    publishedDecks.Add(item);
+
+                    // Thro a new event.
+                    OnDeckObtained(messages);
+
+                    // Wait next.
+                    return;
                 }
 
             }
@@ -137,11 +136,6 @@ namespace TWPoster
             {
                 timer.Change(tiempoEspera, TimeSpan.Zero);
             }
-        }
-
-        public void UnificarImagenes(string image1)
-        {
-
         }
     }
 }

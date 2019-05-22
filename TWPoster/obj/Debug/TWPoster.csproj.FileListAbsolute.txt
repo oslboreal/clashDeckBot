@@ -121,3 +121,4 @@ C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.C
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.exe
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.pdb
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\MaterialDesignColors.pdb

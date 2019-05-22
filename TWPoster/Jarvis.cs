@@ -58,7 +58,6 @@ namespace TWPoster
             SendTweetOptions options = new SendTweetOptions();
 
             string imageUrl = "file:\\" + Environment.CurrentDirectory + "\\" + imagePath;
-            string URL = "file:\\C:\\Users\\<User>\\Desktop\\test.jpg";
             string path = new Uri(imageUrl).LocalPath;
 
             // Sending with Media
