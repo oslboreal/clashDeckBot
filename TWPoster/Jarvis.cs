@@ -61,7 +61,7 @@ namespace TWPoster
             string path = new Uri(imageUrl).LocalPath;
 
             // Sending with Media
-            using (var stream = new FileStream(path, FileMode.Open))
+            using (var stream = new FileStream(imagePath, FileMode.Open))
             {
                 mainService.SendTweetWithMedia(new SendTweetWithMediaOptions
                 {

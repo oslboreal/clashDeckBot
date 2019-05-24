@@ -91,10 +91,7 @@ C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.cspr
 C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.CopyComplete
 C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.exe
 C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.pdb
-C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csprojAssemblyReference.cache
-C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\App.g.cs
-C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster_MarkupCompile.cache
-C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster_MarkupCompile.lref
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\MaterialDesignColors.pdb
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\TWPoster.exe.config
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\TWPoster.exe
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\TWPoster.pdb
@@ -102,7 +99,14 @@ C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Hammock.ClientPro
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\MaterialDesignColors.dll
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\MaterialDesignThemes.Wpf.dll
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Newtonsoft.Json.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Pekka.ClashRoyaleApi.Client.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Pekka.Core.dll
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\RestSharp.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Net.Http.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.X509Certificates.dll
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\TweetSharp.dll
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Hammock.ClientProfile.pdb
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\MaterialDesignColors.pdb
@@ -112,6 +116,9 @@ C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Newtonsoft.Json.x
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\RestSharp.xml
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\TweetSharp.pdb
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\MainWindow.g.cs
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\App.g.cs
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster_MarkupCompile.cache
+C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster_MarkupCompile.lref
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\App.baml
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\MainWindow.baml
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.g.resources
@@ -121,4 +128,3 @@ C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.C
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.exe
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.pdb
-C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\MaterialDesignColors.pdb

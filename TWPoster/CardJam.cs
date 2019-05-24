@@ -45,7 +45,6 @@ namespace TWPoster
             Bitmap img3 = new Bitmap("wallpaper.png");
 
             Graphics g = Graphics.FromImage(img3);
-            //g.Clear(Color.Black);
 
             for (int i = 0; i < Images.Count; i++)
             {

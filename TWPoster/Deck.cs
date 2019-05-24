@@ -35,9 +35,7 @@ namespace TWPoster
             foreach (var item in Cards)
                 stringBuilder.Append(item.Id);
 
-            var hash = CalculateMD5Hash(stringBuilder.ToString());
-
-            return hash;
+            return stringBuilder.ToString();
         }
 
         private string CalculateMD5Hash(string input)
