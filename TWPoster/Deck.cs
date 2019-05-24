@@ -29,15 +29,6 @@ namespace TWPoster
             return sb.ToString();
         }
 
-        public new string GetHashCode()
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            foreach (var item in Cards)
-                stringBuilder.Append(item.Id);
-
-            return stringBuilder.ToString();
-        }
-
         private string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
@@ -52,6 +43,31 @@ namespace TWPoster
                 sb.Append(hash[i].ToString("X2"));
             }
             return sb.ToString();
+        }
+
+        public static bool operator ==(Deck a, Deck b)
+        {
+            int matches = 0;
+            for (int i = 0; i < 8; i++)
+                if (a.Cards[i].Id == b.Cards[i].Id)
+                    matches++;
+
+            return (matches == 8);
+        }
+
+        public static bool operator !=(Deck a, Deck b)
+        {
+            return a == b;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
         }
     }
 }

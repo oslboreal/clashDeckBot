@@ -149,7 +149,7 @@ namespace TWPoster
                         {
                             var firstDeck = decks[i];
                             var secondDeck = decks[j];
-                            if (firstDeck.GetHashCode() == secondDeck.GetHashCode())
+                            if (firstDeck == secondDeck)
                                 decks.Remove(decks[i]);
                         }
                     }
