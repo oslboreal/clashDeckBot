@@ -128,3 +128,10 @@ C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.C
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.csproj.CopyComplete
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.exe
 C:\Users\User\Documents\GitHub\clashDeckBot\TWPoster\obj\Debug\TWPoster.pdb
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Pekka.ClashRoyaleApi.Client.dll
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\Pekka.Core.dll
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Net.Http.dll
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.Algorithms.dll
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.Encoding.dll
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.Primitives.dll
+C:\Users\mvallejo\Documents\GitHub\clashDeckBot\TWPoster\bin\Debug\System.Security.Cryptography.X509Certificates.dll

@@ -51,7 +51,7 @@ namespace TWPoster
             request.AddParameter("Authorization", string.Format("Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImI2YTk2MDU5LWU3N2UtNDQwYy1hN2FmLTE4NDUwYTVhOTk0MyIsImlhdCI6MTU1ODY1NTI3Niwic3ViIjoiZGV2ZWxvcGVyL2EzYWQ1NDNiLTcxZDYtNTg1ZC04ZDJjLTlhNjA0MTJlY2FmZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxODEuNDUuNDMuMTIxIl0sInR5cGUiOiJjbGllbnQifV19.ZCgUa9X81blhEAWFh7WfFixhI-ZynJ4sqFRzfjHdulVUpId99jSKzwq43Si1jfongiKuk933m-ewyB9JKqEhSA"),
             ParameterType.HttpHeader);
             string json = client.Execute(request).Content;
-            
+
             File.WriteAllText(ARCHIVO_CARTAS, json);
         }
 
@@ -149,7 +149,7 @@ namespace TWPoster
                         {
                             var firstDeck = decks[i];
                             var secondDeck = decks[j];
-                            if (firstDeck.GetHashCode() == secondDeck.GetHashCode())
+                            if (firstDeck == secondDeck)
                                 decks.Remove(decks[i]);
                         }
                     }
